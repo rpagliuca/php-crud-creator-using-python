@@ -78,7 +78,7 @@ def gerarClasse(config):
     c(linha);
     linha = 'VALUES (';
     for campo in camposDaTabela:
-        linha = linha + " '\" . $this->ler" + campo["cameloCapitalizada"] + "() . \"', "
+        linha = linha + " '\" . mysql_real_escape_string($this->ler" + campo["cameloCapitalizada"] + "()) . \"', "
     linha = linha[0:-2]
     linha = linha + ')");';
     c(linha);
@@ -91,7 +91,7 @@ def gerarClasse(config):
     c('public function salvarAlteracoes() {');
     linha = '\+parent::salvarAlteracoes("UPDATE $this->tabela SET ';
     for campo in camposDaTabela:
-        linha = linha + campo["php"] + "='\" . $this->ler" + campo["cameloCapitalizada"] + "() . \"', ";
+        linha = linha + campo["php"] + "='\" . mysql_real_escape_string($this->ler" + campo["cameloCapitalizada"] + "()) . \"', ";
     
     linha = linha[0:-2]
     linha = linha + ' ';

@@ -48,7 +48,7 @@ def gerarPHPAjax(config):
     c(linha);
     c('echo "{\\\"returncode\\\" : \\\"0\\\", \\\"mensagem\\\" : \\\"Registro inserido com sucesso!\\\", \\\"codigoInsercao\\\" : \\\"" . $registroAInserir->lerCodigo() . "\\\"}";')
     c('\-} catch (Exception $e) {');
-    c('echo "{\\\"returncode\\\" : \\\"1\\\", \\\"mensagem\\\" : $e->getMessage()}";')
+    c('echo "{\\\"returncode\\\" : \\\"1\\\", \\\"mensagem\\\" : {$e->getMessage()}}";')
     c('\-}');
     c('\-} else {');
     c('echo "{\\\"returncode\\\" : \\\"2\\\", \\\"mensagem\\\" : \\\"Não há conexão com o banco de dados\\\"}";')
@@ -61,7 +61,7 @@ def gerarPHPAjax(config):
     c('\+try {');
     c('\+$registroAAtualizar->buscarPorCodigo($_REQUEST["codigo"]);');
     c('\-} catch (Exception $e) {');
-    c('echo "{\\\"returncode\\\" : \\\"1\\\", \\\"mensagem\\\" : $e->getMessage()}";')
+    c('echo "{\\\"returncode\\\" : \\\"1\\\", \\\"mensagem\\\" : {$e->getMessage()}}";')
     c('\-}');
     c('try {');
     linha = '\+$registroAAtualizar->alterar(';
