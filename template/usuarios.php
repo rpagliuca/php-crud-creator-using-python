@@ -123,9 +123,9 @@ if (!isset($_POST["acaoAlterar"])) { // Se o botão "Alterar" não foi acionado
 			echo "<table class=\"zebrada\">\n";
 			echo "<tr class=\"cabecalhoTabela\"><th>Cód.</th><th>Login</th><th>Senha</th><th>Nível de Acesso</th><th>Último Acesso</th><th>Último IP</th>\n<th>Total de Logins</th><th>Total de Erros</th><th colspan=\"2\">Ações</th></tr>\n";
 			foreach ($registros as $registro) {
-				if ($registro->lerCodigo() == $registroAInserir->lerCodigo() ||
-					$registro->lerCodigo() == $registroAAtualizar->lerCodigo() ||
-					$registro->lerCodigo() == $_POST["acaoExcluir"]) {
+				if ($registro->lerCodigo() == $registroAInserir->lerCodigo() or
+					$registro->lerCodigo() == $registroAAtualizar->lerCodigo() or
+					(isset($_POST['acaoExcluir']) and $registro->lerCodigo() == $_POST["acaoExcluir"])) {
 					echo "<tr id=\"ultimaInserida\">\n";
 				} else {
 					echo "<tr>\n";

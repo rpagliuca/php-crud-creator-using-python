@@ -15,7 +15,7 @@ config = Config()
 def run():
 	
 	#Lê o diretório do site passado por parâmetro em builder.sh
-	config.diretorioSite = sys.argv[1] + "painel/"
+	config.diretorioSite = sys.argv[1]
 	config.diretorioScript = sys.argv[2]
 	
 	#Execução do script, conforme número de classes definidas no arquivo config.py

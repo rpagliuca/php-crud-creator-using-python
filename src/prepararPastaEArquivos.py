@@ -6,17 +6,15 @@ def prepararPastaEArquivos(config):
     classeAtual = config.classeAtual
     siteJaExiste = False
     
-    try:
-        os.makedirs(config.diretorioSite)
-    except:
-        print "Já existe a pasta '" + config.diretorioSite + "'. Adicionando arquivos à pasta existente."
+    if os.path.isdir(config.diretorioSite):
         siteJaExiste = True
-        
-    os.chdir(config.diretorioSite)
+        os.chdir(config.diretorioSite)
+        print "Já existe a pasta '" + config.diretorioSite + "'. Adicionando arquivos à pasta existente."
     
     if not siteJaExiste:
         #se não existe o site, copia a pasta de template
-        os.system("cp " + config.diretorioScript + "/../template/* -R \"" + config.diretorioSite + "\"")
+        os.system("cp " + config.diretorioScript + "/../template -R \"" + config.diretorioSite + "/\"")
+        os.chdir(config.diretorioSite)
         print "Diretório do script: " + config.diretorioScript
         print "Diretório de saída: " + config.diretorioSite
         
