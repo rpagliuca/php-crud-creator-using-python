@@ -115,9 +115,9 @@ def gerarPHPPrincipal(config):
 
     c('<th colspan=\\\"3\\\">Ações</th></tr></thead><tbody>\\n";');
     c('for ($i=0; $i<=sizeof($registros)-1; $i++) {');
-    c('\+if ($registros[$i]->lerCodigo() == $registroAInserir->lerCodigo() ||');
-    c('\+$registros[$i]->lerCodigo() == $registroAAtualizar->lerCodigo() ||');
-    c('$registros[$i]->lerCodigo() == $_POST["acaoExcluir"]) {');
+    c('\+if ($registros[$i]->lerCodigo() == $registroAInserir->lerCodigo() or');
+    c('\+$registros[$i]->lerCodigo() == $registroAAtualizar->lerCodigo() or');
+    c('(isset($_POST["acaoExcluir"]) and ($registros[$i]->lerCodigo() == $_POST["acaoExcluir"]))) {');
     c('echo "<tr id=\\\"ultimaInserida\\\">\\n";');
     c('\-')
     c('\+} else {');

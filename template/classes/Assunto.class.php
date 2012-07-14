@@ -138,7 +138,7 @@ class Assunto {
 				if ($this->lerCamposExibicaoDeRelacionamentosMuitosParaMuitos()) {
 					#die(var_dump($this->lerCamposExibicaoDeRelacionamentosMuitosParaMuitos()));
 					foreach ($this->lerCamposExibicaoDeRelacionamentosMuitosParaMuitos() as $campoExibicao) {
-						if ($campoExibicao["campoExibicao"]) {
+						if (isset($campoExibicao['campoExibicao']) and $campoExibicao["campoExibicao"]) {
 							$condicoesFormatadas .= "UPPER(CONVERT(IFNULL(GROUP_CONCAT(`" . $campoExibicao["tabelaRemota"] . "`." . $campoExibicao["campoExibicao"] . " SEPARATOR ' '), '') USING utf8)), ' ', ";
 						}
 					}

@@ -80,7 +80,7 @@ def gerarPHPAjax(config):
     c('\-} else {');
     c('echo "{\\\"returncode\\\" : \\\"1\\\", \\\"mensagem\\\" : \\\"Não há conexão com o banco de dados.\\\"}";')
     c('\-}');
-    c('echo $GLOBALS["mensagem"];')
+    c('if (isset($GLOBALS["mensagem"])) { echo $GLOBALS["mensagem"]; }')
     c('\-}');
     
     #Caso o formulário de exclusão tenha sido submetido
