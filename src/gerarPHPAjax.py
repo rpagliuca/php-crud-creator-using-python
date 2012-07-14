@@ -40,9 +40,9 @@ def gerarPHPAjax(config):
 
     linha = '\+$registroAInserir->inserir(';
     for campo in camposDaTabela:
-        linha = linha + '$_REQUEST["' + campo["camelo"] + '"], '
+        linha = linha + '(isset($_REQUEST["' + campo["camelo"] + '"]) ? $_REQUEST["' + campo["camelo"] + '"] : ""), '
     for relacionamento in classeAtual.lerRelacionamentosMuitosParaMuitos():
-        linha = linha + '$_REQUEST["' + relacionamento["camelo"] + '"], '
+        linha = linha + '(isset($_REQUEST["' + relacionamento["camelo"] + '"]) ? $_REQUEST["' + relacionamento["camelo"] + '"] : ""), '
     linha = linha[0:len(linha)-2];
     linha = linha + ');';
     c(linha);
@@ -66,9 +66,9 @@ def gerarPHPAjax(config):
     c('try {');
     linha = '\+$registroAAtualizar->alterar(';
     for campo in camposDaTabela:
-        linha = linha + '$_REQUEST["' + campo["camelo"] + '"], ';
+        linha = linha + '(isset($_REQUEST["' + campo["camelo"] + '"]) ? $_REQUEST["' + campo["camelo"] + '"] : ""), ';
     for relacionamento in classeAtual.lerRelacionamentosMuitosParaMuitos():
-        linha += '$_REQUEST["' + relacionamento["camelo"] + '"], '
+        linha += '(isset($_REQUEST["' + relacionamento["camelo"] + '"]) ? $_REQUEST["' + relacionamento["camelo"] + '"] : ""), '
     linha = linha[0:len(linha)-2];
     linha = linha + ');';
     c(linha);
