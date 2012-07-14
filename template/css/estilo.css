@@ -1,0 +1,206 @@
+body, td, th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	padding-bottom:32px;	
+}
+
+div#mensagem, tr#ultimaInserida {
+	/*background:#FFCC00;*/
+	background:#006699;
+	color:white;
+	font-weight:bold;
+}
+
+table.zebrada tr.recemAlterada {
+	background:#E0E9FF;
+}
+
+div#mensagem {
+	padding:7px;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	position:fixed;
+	z-index:1;
+	font-size:110%;
+}
+
+div#tabs span.linhaRelacionamento {
+	font-weight: normal;
+	font-size: 100%;
+}
+
+div.subBlocoAlterar {
+	padding:10px;
+	margin:10px;
+	margin-left:0px;
+	border: 1px dotted black;
+	background: #FFFFBB;	
+}
+
+div.subBlocoAlterar a {
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div#filtro {
+	padding: 10px;
+	margin-bottom: 10px;
+	background: #B3C8FF;
+	width:400px;
+	font-size:12px;
+}
+
+div#avisoFiltro {
+	padding: 10px;
+	margin-bottom: 10px;
+	width:400px;
+	background: #005CC2;
+	color: white;
+}
+
+div#avisoFiltro a {
+	color: inherit;
+}
+
+div#estatisticaConsulta {
+	font-size:11px;
+	color:#666666;
+}
+
+div#tabs span {
+	color:black;
+	font-size:12px;
+	font-weight:bold;
+	margin-bottom:0px;
+}
+
+div#menu {
+	font-size:13px;
+	width:100%;
+	background:#EAECFF;
+	color:black;
+	margin-bottom:10px;
+}
+
+div#innerMenu {
+	padding:10px;
+}
+
+div#menu a {
+	color:navy;
+	text-decoration:none;
+	font-size:110%;
+}
+
+div#menu a:hover {
+	color:red;
+}
+
+div span {
+	display:block;
+	font-weight:bold;
+	font-size:14px;
+	color:red;
+	margin-bottom:10px;
+}
+
+form {
+	margin:0px;
+}
+
+input, select {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin:2px;
+}
+
+option.lojaEmpresa {
+	background:white;
+}
+
+option.lojaPessoaFisica {
+	background:#DDDDDD;
+}
+
+table, td, th {
+	border:1px solid black;
+}
+
+table.semBorda, table.semBorda tr, table.semBorda tr td {
+	border:0px solid white;
+}
+
+table {
+	border-collapse:collapse;
+}
+
+td, th {
+	padding: 5px;
+	border-spacing:0px;
+}
+
+th {
+	text-align:center;
+	background: #B3C8FF;
+}
+
+hr {
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.cabecalhoTabela {
+	background:#B3C8FF;
+}
+
+.linhaOver {
+	background:#FFE254;
+}
+
+.linhaImpar {
+	background:#FFFFBB;
+}
+
+/* início tablesorter */
+/*table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 4px;
+}*/
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+	padding-right:20px;
+}
+/*table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}*/
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+/*table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}*/
+/* fim tablesorter */
