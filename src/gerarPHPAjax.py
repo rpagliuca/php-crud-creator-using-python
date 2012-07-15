@@ -93,6 +93,10 @@ def gerarPHPAjax(config):
     c('echo json_encode(array("returncode"=>"1","mensagem"=>$e->getMessage()));')
     c('\-}');
     c('\-}');
+
+    ###########################                        ###########################
+    ########################### FORMULÁRIO DE INSERÇÃO ###########################
+    ###########################                        ###########################
     
     c('if (isset($_REQUEST["acaoFormularioInsercao"])) {')    
     c('\+// Formulário Inserir'); 
@@ -139,7 +143,10 @@ def gerarPHPAjax(config):
         c('\-})')
         c('\-})')
         c('</script>')
-        c('<div class="item' + campo["cameloCapitalizada"] + '"><?=$registro->gerarSelectInserir' + campo["cameloCapitalizada"] + 's()?> (<a href="javascript: return false;">x</a>)</div>')
+        if campo['chaveEstrangeira']:
+            c('<div class="item' + campo["cameloCapitalizada"] + '"><?=$registro->gerarSelectInserir' + campo["cameloCapitalizada"] + 's()?> (<a href="javascript: return false;">x</a>)</div>')
+        else:
+            c('<div class="item' + campo["cameloCapitalizada"] + '"><?=$registro->gerarInput' + campo["cameloCapitalizada"] + 's()?> (<a href="javascript: return false;">x</a>)</div>')
         c('<div id="adicionar' + campo["cameloCapitalizada"] + '"></div>')
         c('<input type="button" value="+" onClick="adicionar' + campo["cameloCapitalizada"] + '(); return false;"/>')
         c('</div>')            
@@ -148,6 +155,11 @@ def gerarPHPAjax(config):
     c('</form>');
     c('<?')
     c('\-}')
+
+    ###########################                         ###########################
+    ########################### FORMULÁRIO DE ALTERAÇÃO ###########################
+    ###########################                         ###########################
+
     c('// Formulário "Alterar"');
     c('\-if (isset($_REQUEST["acaoFormularioAlteracoes"])) {');
     c('\+try {');
@@ -185,7 +197,10 @@ def gerarPHPAjax(config):
         c('<script>')
         c('function alterarAdicionar' + campo["cameloCapitalizada"] + '() {')
         c('\+')
-        c('$(".alterarItem' + campo["cameloCapitalizada"] + ':first").clone().attr("id", "").find("select").val(0).parent().appendTo("#alterarAdicionar' + campo["cameloCapitalizada"] + '")')
+        if campo['chaveEstrangeira']:
+            c('$(".alterarItem' + campo["cameloCapitalizada"] + ':first").clone().attr("id", "").find("select").val(0).parent().appendTo("#alterarAdicionar' + campo["cameloCapitalizada"] + '").find("select").focus();')
+        else:
+            c('$(".alterarItem' + campo["cameloCapitalizada"] + ':first").clone().attr("id", "").find("input").val("").parent().appendTo("#alterarAdicionar' + campo["cameloCapitalizada"] + '").find("input").focus();')
         c('\-}')
         c('$(document).ready(function(){')
         c('\+$(".alterarItem' + campo["cameloCapitalizada"] + '").find("a").click(function(){')
@@ -200,12 +215,18 @@ def gerarPHPAjax(config):
         c('if (is_array($' + campo["camelo"] + 's)) {')
         c('foreach($' + campo["camelo"] + 's as $' + campo["camelo"] + ') {')
         c('?>')
-        c('<div class="alterarItem' + campo["cameloCapitalizada"] + '"><?=$registro->gerarSelectInserir' + campo["cameloCapitalizada"] + 's($' + campo["camelo"] + ')?> (<a href="javascript: return false;">x</a>)</div>')
+        if campo['chaveEstrangeira']:
+            c('<div class="alterarItem' + campo["cameloCapitalizada"] + '"><?=$registro->gerarSelectInserir' + campo["cameloCapitalizada"] + 's($' + campo["camelo"] + ')?> (<a href="javascript: return false;">x</a>)</div>')
+        else:
+            c('<div class="alterarItem' + campo["cameloCapitalizada"] + '"><?=$registro->gerarInput' + campo["cameloCapitalizada"] + 's($' + campo["camelo"] + ')?> (<a href="javascript: return false;">x</a>)</div>')
         c('<?')
         c('\-}')
         c('\-} else {')
         c('?>')
-        c('<div class="alterarItem' + campo["cameloCapitalizada"] + '"><?=$registro->gerarSelectInserir' + campo["cameloCapitalizada"] + 's()?> (<a href="javascript: return false;">x</a>)</div>')
+        if campo['chaveEstrangeira']:
+            c('<div class="alterarItem' + campo["cameloCapitalizada"] + '"><?=$registro->gerarSelectInserir' + campo["cameloCapitalizada"] + 's()?> (<a href="javascript: return false;">x</a>)</div>')
+        else:
+            c('<div class="alterarItem' + campo["cameloCapitalizada"] + '"><?=$registro->gerarInput' + campo["cameloCapitalizada"] + 's()?> (<a href="javascript: return false;">x</a>)</div>')
         c('<?')
         c('\-}')
         c('?>')

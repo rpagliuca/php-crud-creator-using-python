@@ -69,9 +69,10 @@ Caracteres especiais para configuração das classes:
 `!` campo NOT NULL (Ex: !nome)  
 `*` campo de exibição padrão (Ex: *nome)  
 `~` campo de chave estrangeira (Ex: ~turma) [has one]  
-`&` tabela de relacionamentos many-to-many, com o nome da tabela em dentro de chaves (Ex: &item:itens_pedidos) [many to many] Atenção: Use `&&` em vez de `&` quando o campo da tabela many-to-many não for chave estrangeira  
+`&` select para escolher valor de outra classe [relacionamento many-to-many]  (Ex: &item:itens_pedidos)  
+`&&` campo de texto para salvar vários valores [one-to-many] (Ex: &&telefone:responsaveltelefones|Telefones para salvar na tabela ResponsavelTelefones vários telefones de um responsável)
 `$` campo invisível somente na listagem "exibirTodos"  
 `@` campo invisível na listagem "exibirTodos" e no "Alterar"  
 
-*OBS - As configurações são cumulativas (você pode usar mais de um sinal ao mesmo tempo).*  
+*OBS - Algumas das configurações são cumulativas (você pode usar mais de um sinal ao mesmo tempo).*  
 Exemplo: `!*nome` significa que o campo nome é o campo de exibição padrão da tabela (símbolo *) e é um campo obrigatório NOT NULL (símbolo !) 

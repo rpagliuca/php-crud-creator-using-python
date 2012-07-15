@@ -2,8 +2,7 @@
 
 class Classe:    
     def __init__(self, classe, atributos, prefixoChaves="ch_"):
-        #Inicializão das variáveis
-       
+        #Inicialização das variáveis
         self.atributos = atributos
         self.prefixoChaves = prefixoChaves
         self.chave = ""
@@ -11,12 +10,18 @@ class Classe:
         self.prefixoPadrao = ""
         self.campos = []
         self.relacionamentos = []
+        self.isHidden = False
         
         #Execução de algumas ações
         self.criarNomes(classe)
         self.processarAtributos()
     
     def criarNomes(self, classe):
+        # Verifica se é uma classe oculta
+        posChar = classe.find('@')
+        if posChar != -1:
+            self.isHidden = True
+            classe = classe[1:]
         if len(classe.split("|")) == 1:
             self.classeSingular = classe
             self.classePlural = classe + "s"
@@ -31,7 +36,7 @@ class Classe:
             self.classeExibicao = classe.split("|")[2]
         self.tabela = self.classePlural.lower()
         self.prefixoPadrao = self.classeSingular[0:3].lower() + '_'
-        self.chave =self.prefixoChaves + self.classeSingular.lower()       
+        self.chave = self.prefixoChaves + self.classeSingular.lower()       
         
     def processarAtributos(self):
         prefixo = self.prefixoPadrao

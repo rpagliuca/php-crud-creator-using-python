@@ -1,0 +1,1 @@
+Make search work for one-to-many relationships (currently it gives an error about class not being found).

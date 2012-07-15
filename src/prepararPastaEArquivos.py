@@ -32,9 +32,10 @@ def prepararPastaEArquivos(config):
         os.system("sed -i -e \"s/\\[__REPLACE-MYSQL-BANCO__\\]/" + config.mysqlConfig[3] + "/g\" " + config.diretorioSite + "/classes/Padrao.php")
         os.system("sed -i -e \"s/\\[__REPLACE-MYSQL-BANCO__\\]/" + config.mysqlConfig[3] + "/g\" " + config.diretorioSite + "/install.php")
         
-    #comando que adiciona o link para o arquivo gerado no arquivo top.inc.php
-    if classeAtual != config.classes[-1]:
-        stringSeparacao = "|"
-    else:
-        stringSeparacao = ""
-    os.system("sed -i -e \"s/<?php \\/\\/REPLACE-OUTRAS-OPCOES ?>/<a href=\\\""+ classeAtual.tabela + ".php\\\">" + classeAtual.classeExibicao + "<\\/a> " + stringSeparacao + "\\n\\t<?php \\/\\/REPLACE-OUTRAS-OPCOES ?>/g\" " + config.diretorioSite + "/includes/topo.inc.php")
+    #comando que adiciona o link para o arquivo gerado no arquivo top.inc.php, a menos que a classe seja oculta
+    if not classeAtual.isHidden:
+        if classeAtual != config.classes[-1]:
+            stringSeparacao = "|"
+        else:
+            stringSeparacao = ""
+        os.system("sed -i -e \"s/<?php \\/\\/REPLACE-OUTRAS-OPCOES ?>/<a href=\\\""+ classeAtual.tabela + ".php\\\">" + classeAtual.classeExibicao + "<\\/a> " + stringSeparacao + "\\n\\t<?php \\/\\/REPLACE-OUTRAS-OPCOES ?>/g\" " + config.diretorioSite + "/includes/topo.inc.php")

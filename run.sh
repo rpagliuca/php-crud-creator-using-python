@@ -16,6 +16,8 @@ SCRIPT_DIR="src/"
 
 # Remove a classe python de configurações do último projeto
 rm $SCRIPT_DIR"/config.py"
+rm $SCRIPT_DIR"/config.pyc"
+
 # Copia a classe python de configurações do projecto para a pasta do código fonte
 cp $PROJECT_DIR"/config.py" $SCRIPT_DIR"/config.py"
 if [ "$?" != "0" ]; then
@@ -35,3 +37,7 @@ cd $SCRIPT_DIR
 
 # Executa arquivo principal do projeto e, caso não apresente problemas, sincroniza
 python main.py $OUTPUT_DIR $SCRIPT_DIR
+
+# Remove a classe python de configurações do último projeto (redundante, mas evita a poluição da estrutura de arquivos)
+rm $SCRIPT_DIR"/config.py"
+rm $SCRIPT_DIR"/config.pyc"
